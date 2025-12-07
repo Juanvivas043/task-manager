@@ -10,7 +10,6 @@ export async function appRouter() {
 	divParent.innerHTML = ''
 
 	const isSessionActive = await getSession()
-	console.log(isSessionActive.session)
 
 	if((isSessionActive.session !== null)) {
 		return await dashboardPage().then((page) => {

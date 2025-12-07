@@ -1,5 +1,4 @@
-import { signIn } from "../services/auth"
-import { type LoginCredentials, type RegisterCredentials } from "../types/definitions"
+import { signIn, signUp } from "../services/auth"
 import { appRouter } from "../main"
 
 export async function loginPage(): Promise<string> {
@@ -83,10 +82,10 @@ export async function loginPageEvents(): Promise<void> {
 
         if(!emailInput || !passwordInput || !errorContainer) return
 
-        const emailValue: string = emailInput.value.trim()
-        const passwordValue: string = passwordInput.value.trim()
+        const email: string = emailInput.value.trim()
+        const password: string = passwordInput.value.trim()
 
-        const {email, password, errorMessage} = await validateLoginCredentials({emailValue, passwordValue})
+        const {errorMessage} = await signIn({email, password})
 
         if(errorMessage) {
             errorContainer.innerHTML = ""
@@ -95,10 +94,6 @@ export async function loginPageEvents(): Promise<void> {
             `
             return errorContainer.innerHTML += error
         }
-
-        const {user, session} = await signIn({email, password})
-
-        if(!user || !session) return console.log("usuario no existe")
 
         await appRouter()
     
@@ -134,13 +129,13 @@ export async function registerPageEvents(): Promise<void> {
 
         if(!emailInput || !passwordInput || !errorContainer || !nombreInput || !apellidoInput || !usernameInput) return
 
-        const nombreValue: string = nombreInput.value.trim()
-        const apellidoValue: string = apellidoInput.value.trim()
-        const usernameValue: string = usernameInput.value.trim()
-        const emailValue: string = emailInput.value.trim()
-        const passwordValue: string = passwordInput.value.trim()
+        const nombre: string = nombreInput.value.trim()
+        const apellido: string = apellidoInput.value.trim()
+        const username: string = usernameInput.value.trim()
+        const email: string = emailInput.value.trim()
+        const password: string = passwordInput.value.trim()
 
-        const {email, password, username, nombre, apellido, errorMessage} = await validateReisterCredentiales({nombreValue, apellidoValue, usernameValue, emailValue, passwordValue})
+        const {errorMessage} = await signUp({email, password, username, nombre, apellido}) 
 
         if(errorMessage) {
             errorContainer.innerHTML = ""
@@ -150,104 +145,12 @@ export async function registerPageEvents(): Promise<void> {
             return errorContainer.innerHTML += error
         }
 
-        console.log(email, password, username, nombre, apellido, errorMessage)
+        await appRouter()
         //aprender expresiones regulares
-        //metodo para crear cuenta, tengo que hacer un insert donde sea el mismo id e insertar los datos de nombre, apellido, usuario, created_at, updated_at
-        //cuando se creee la cuenta redireccionar al dahsboard
         //Crear el inicio del dashboard y labarra lateral
     });
 }
 
-function validateLoginCredentials({emailValue, passwordValue, error}: {
-    emailValue: string; 
-    passwordValue: string;
-    error?: string
-}): LoginCredentials {
-
-    if(!emailValue || !passwordValue) {
-        return {
-            email: "",
-            password: "",
-            errorMessage: "No pueden estar vacio los campos"
-        }}
-
-    if(passwordValue.length < 8) {
-        return {
-            email: "",
-            password: "",
-            errorMessage: "La constraseña debe ser mayor a 8 caracteres"
-    }}
-
-    if(!emailValue.includes("@")) {
-        return {
-            email: "",
-            password: "",
-            errorMessage: "Debe introducir un correo valido"
-    }}
-    
-    const credentials: LoginCredentials  = {
-        email: emailValue, 
-        password: passwordValue,
-        errorMessage: error || ""
-    }
-
-    return credentials
-
-}
-
-
-function validateReisterCredentiales({emailValue, passwordValue, usernameValue, nombreValue, apellidoValue, error}: {
-    emailValue: string; 
-    passwordValue: string;
-    usernameValue: string;
-    nombreValue: string;
-    apellidoValue: string;
-    error?: string
-}): RegisterCredentials  {
-
-    if(!emailValue || !passwordValue || !usernameValue || !nombreValue || !apellidoValue) {
-        return {
-            email: "",
-            password: "",
-            username: "",
-            nombre: "",
-            apellido: "",
-            errorMessage: "No pueden estar vacio los campos"
-        }}
-
-    if(passwordValue.length < 8) {
-        return {
-            email: "",
-            password: "",
-            username: "",
-            nombre: "",
-            apellido: "",
-            errorMessage: "La constraseña debe ser mayor a 8 caracteres"
-    }}
-
-    if(!emailValue.includes("@")) {
-        return {
-            email: "",
-            password: "",
-            username: "",
-            nombre: "",
-            apellido: "",
-            errorMessage: "Debe introducir un correo valido"
-    }}
-
-    
-    const credentials: RegisterCredentials  = {
-        email: emailValue,
-        password: passwordValue,
-        username: usernameValue,
-        nombre: nombreValue,
-        apellido: apellidoValue,
-        errorMessage: error || ""
-    }
-
-    return credentials
-
-}
 
 
 
