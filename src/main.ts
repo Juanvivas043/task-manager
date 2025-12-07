@@ -1,6 +1,6 @@
 import { getSession } from "./services/auth";
 import { loginPageEvents, loginPage } from "./views/login";
-import { dashboardPage } from "./views/dashboard";
+import { dashboardPage, dashboardPageEvents } from "./views/dashboard";
 import "./style.css"
 
 export async function appRouter() {
@@ -15,6 +15,8 @@ export async function appRouter() {
 	if((isSessionActive.session !== null)) {
 		return await dashboardPage().then((page) => {
 			divParent.innerHTML += page
+		}).then(() => {
+			dashboardPageEvents()
 		})
 	}
 	
