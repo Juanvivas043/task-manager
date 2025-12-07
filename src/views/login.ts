@@ -4,7 +4,7 @@ import { appRouter } from "../main"
 
 export async function loginPage(): Promise<string> {
     const loginPageContenedor: string = /*html*/ `
-    <section id="contenedorForm" class="flex items-center justify-center bg-[url(./fondologin.jpg)] h-screen bg-cover bg-center bg-black/50 bg-blend-overlay">
+    <section id="contenedorForm" class="flex items-center justify-center bg-[url(/fondologin.webp)] h-screen bg-cover bg-center bg-black/50 bg-blend-overlay">
         <div class="flex flex-col items-center justify-around md:w-175 md:h-140 w-2/3 h-150 bg-white rounded-xl shadow-xl shadow-black animate-fade-in-up">
             <h1 class="text-3xl font-normal text-center px-4 py-4 mt-10">
                 Inicia sesión en <span class="font-bold text-blue-500">Trellito</span>
@@ -29,7 +29,7 @@ export async function loginPage(): Promise<string> {
 
 export async function RegisterPage(): Promise<string> {
     const RegisterPageContenedor: string = /*html*/ `
-    <section id="contenedorForm" class="flex items-center justify-center bg-[url(./fondologin.jpg)] h-screen bg-cover bg-center bg-black/50 bg-blend-overlay">
+    <section id="contenedorForm" class="flex items-center justify-center bg-[url(/fondologin.webp)] h-screen bg-cover bg-center bg-black/50 bg-blend-overlay">
         <div class="flex flex-col items-center justify-around md:w-175 md:h-200 w-2/3 h-200 bg-white rounded-xl shadow-xl shadow-black animate-fade-in-up">
             <h1 class="text-3xl font-normal text-center px-4 py-4 mt-10">
                 Registrate en <span class="font-bold text-blue-500">Trellito</span>
