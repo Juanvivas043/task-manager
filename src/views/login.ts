@@ -18,7 +18,7 @@ export async function loginPage(): Promise<string> {
                     <button type="submit" class="bg-blue-500 w-full p-3 rounded-full font-bold text-white hover:cursor-pointer hover:bg-blue-700 transform duration-200 hover:scale-101">Enviar</button>
                 </form>
 
-                <a href="#" id="formularioToggle" class="text-blue-500 text-center underline hover:cursor-pointer"></a>
+                <a id="formularioToggle" class="text-blue-500 text-center underline hover:cursor-pointer text-sm"></a>
             </div>
         </div>
     </section>`
