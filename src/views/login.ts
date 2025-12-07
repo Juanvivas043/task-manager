@@ -12,8 +12,8 @@ export async function loginPage(): Promise<string> {
 
             <div class="w-3/4 py-10 flex flex-col gap-8">
                 <form id="formularioLogin" class="flex flex-col items-center justify-around gap-8">
-                    <input type="email" placeholder="Correo electrónico" name="email" id="email" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
-                    <input type="password" placeholder="Contraseña" name="password" id="password" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
+                    <input type="email" placeholder="Correo electrónico" name="email" id="email" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200 text-sm"/>
+                    <input type="password" placeholder="Contraseña" name="password" id="password" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200 text-sm"/>
                     <div id="error" class="text-white/0 h-3 text-xs text-center"></div>
                     <button type="submit" class="bg-blue-500 w-full p-3 rounded-full font-bold text-white hover:cursor-pointer hover:bg-blue-700 transform duration-200 hover:scale-101">Enviar</button>
                 </form>
@@ -31,19 +31,19 @@ export async function RegisterPage(): Promise<string> {
     const RegisterPageContenedor: string = /*html*/ `
     <section id="contenedorForm" class="flex items-center justify-center bg-[url(/fondologin.webp)] h-screen bg-cover bg-center bg-black/50 bg-blend-overlay">
         <div class="flex flex-col items-center justify-center md:w-175 w-2/3 bg-white rounded-xl shadow-xl shadow-black animate-fade-in-up">
-            <h1 class="text-3xl font-normal text-center px-4 py-4">
+            <h1 class="text-3xl font-normal text-center px-4 py-4 mt-10">
                 Registrate en <span class="font-bold text-blue-500">Trellito</span>
             </h1>
 
             <div class="w-3/4 py-10 flex flex-col gap-8">
                 <form id="formularioRegister" class="flex flex-col items-center justify-around gap-8">
-                    <div class="flex flex-row w-full gap 2">
-                        <input type="text" placeholder="Nombre" name="nombre" id="nombre" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
-                        <input type="text" placeholder="Apellido" name="apellido" id="apellido" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
+                    <div class="flex flex-row w-full gap-2">
+                        <input type="text" placeholder="Nombre" name="nombre" id="nombre" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200 text-sm"/>
+                        <input type="text" placeholder="Apellido" name="apellido" id="apellido" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200 text-sm"/>
                     </div>
-                    <input type="text" placeholder="Usuario" name="username" id="username" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
-                    <input type="email" placeholder="Correo electrónico" name="email" id="email" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
-                    <input type="password" placeholder="Contraseña" name="password" id="password" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
+                    <input type="text" placeholder="Usuario" name="username" id="username" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200 text-sm"/>
+                    <input type="email" placeholder="Correo electrónico" name="email" id="email" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200 text-sm"/>
+                    <input type="password" placeholder="Contraseña" name="password" id="password" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200 text-sm"/>
                     <div id="error" class="text-white/0 h-3 text-xs text-center"></div>
                     <button type="submit" class="bg-blue-500 w-full p-3 rounded-full font-bold text-white hover:cursor-pointer hover:bg-blue-700 transform duration-200 hover:scale-101">Enviar</button>
                 </form>
