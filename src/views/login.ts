@@ -37,7 +37,7 @@ export async function RegisterPage(): Promise<string> {
 
             <div class="w-3/4 py-10 flex flex-col gap-8">
                 <form id="formularioRegister" class="flex flex-col items-center justify-around gap-8">
-                    <div class="flex flex-row w-full">
+                    <div class="flex flex-row w-full gap 2">
                         <input type="text" placeholder="Nombre" name="nombre" id="nombre" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
                         <input type="text" placeholder="Apellido" name="apellido" id="apellido" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
                     </div>
