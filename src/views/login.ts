@@ -14,7 +14,7 @@ export async function loginPage(): Promise<string> {
                 <form id="formularioLogin" class="flex flex-col items-center justify-around gap-8">
                     <input type="email" placeholder="Correo electrónico" name="email" id="email" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
                     <input type="password" placeholder="Contraseña" name="password" id="password" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
-                    <div id="error" class="text-white/0 h-10 text-center"></div>
+                    <div id="error" class="text-white/0 h-3 text-xs text-center"></div>
                     <button type="submit" class="bg-blue-500 w-full p-3 rounded-full font-bold text-white hover:cursor-pointer hover:bg-blue-700 transform duration-200 hover:scale-101">Enviar</button>
                 </form>
 
@@ -44,11 +44,11 @@ export async function RegisterPage(): Promise<string> {
                     <input type="text" placeholder="Usuario" name="username" id="username" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
                     <input type="email" placeholder="Correo electrónico" name="email" id="email" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
                     <input type="password" placeholder="Contraseña" name="password" id="password" class="bg-gray-300/45 w-full p-4 rounded-full focus:outline-blue-500 focus:caret-blue-500 transform duration-200"/>
-                    <div id="error" class="text-white/0 h-10 text-center"></div>
+                    <div id="error" class="text-white/0 h-3 text-xs text-center"></div>
                     <button type="submit" class="bg-blue-500 w-full p-3 rounded-full font-bold text-white hover:cursor-pointer hover:bg-blue-700 transform duration-200 hover:scale-101">Enviar</button>
                 </form>
 
-                <a id="formularioToggle" class="text-blue-500 text-center underline hover:cursor-pointer"></a>
+                <a id="formularioToggle" class="text-blue-500 text-center underline hover:cursor-pointer text-sm"></a>
             </div>
         </div>
     </section>`
