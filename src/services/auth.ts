@@ -23,9 +23,15 @@ export async function signUp({ email, password, username, nombre, apellido }: {
 		}
 	}
 
-	if(!email.includes("@")) {
+	if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
 		return {
 			errorMessage: 'Debe escribir un correo valido'
+		}
+	}
+
+	if (/\d/.test(nombre) || /\d/.test(apellido)) {
+		return {
+			errorMessage: 'El nombre o apellido no pueden contener números'
 		}
 	}
 
@@ -78,7 +84,7 @@ export async function signIn({ email, password }: {
 		}
 	}
 
-	if(!email.includes("@")) {
+	if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
 		return {
 			errorMessage: 'Debe escribir un correo valido'
 		}
