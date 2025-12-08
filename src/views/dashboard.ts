@@ -3,7 +3,7 @@ import { sideBarComponent, siderBarEvents } from "../components/sideBarComponent
 export async function dashboardPage() {
 
     const dashboardPageContenedor = /*html*/ `
-    <section class="flex flex-row h-screen">
+    <section class="flex flex-row h-screen animate-fade-in-up">
         ${await sideBarComponent()}
         <div class="flex flex-col bg-white w-full p-20 gap-8">
             <h1 class="text-3xl font-semibold">Bienvenido a <span class="text-md text-blue-500 font-semibold">Trellito</span>!</h1>
