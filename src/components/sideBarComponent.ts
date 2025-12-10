@@ -1,7 +1,7 @@
 import { appRouter } from "../main"
 import { getSession, signOut } from "../services/auth"
 
-export async function sideBarComponent(){
+export async function SideBarDesktop(){
     const session = await getSession()
     const headerContainer = /*html*/ `
     <aside class="bg-blue-600 text-white hidden lg:flex lg:flex-col justify-between h-full p-8">
@@ -44,8 +44,16 @@ export async function sideBarComponent(){
             </button>
         </div>
     </aside>
-    
-    <aside id="sideBarMobileContainer" class="bg-blue-600 text-white hidden fixed h-screen flex-col lg:hidden justify-between p-8 z-10">
+    </aside>
+    `
+    return headerContainer
+}
+
+export async function SideBarMobile(){
+    const session = await getSession()
+    const mobileContainer = /*html*/ `
+    <div id="mobileOverlay" class="fixed inset-0 bg-black/50 z-30 hidden lg:hidden backdrop-blur-sm"></div>
+    <aside id="sideBarMobileContainer" class="bg-blue-600 text-white hidden fixed h-screen flex-col lg:hidden justify-between p-8 z-40 shadow-xl shadow-black">
         <div class="flex flex-row gap-3 bg-white p-5 rounded-md">
             <svg class="text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2H2V12C2 12.5304 2.21071 13.0391 2.58579 13.4142C2.96086 13.7893 3.46957 14 4 14H14V4C14 3.46957 13.7893 2.96086 13.4142 2.58579C13.0391 2.21071 12.5304 2 12 2Z"></path>
@@ -86,21 +94,21 @@ export async function sideBarComponent(){
         </div>
     </aside>
     
-    <button id="sideBarClose" class="lg:hidden hidden shadow-sm shadow-black/70 p-2 rounded-full absolute text-blue-500 top-5 right-5 z-20 bg-white">
+    <button id="sideBarClose" class="lg:hidden hidden shadow-sm shadow-black/70 p-2 rounded-full fixed text-blue-500 top-5 right-5 z-50 bg-white">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 12H5"></path>
             <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
     </button>
 
-    <button id="sideBarOpen" class="lg:hidden shadow-sm shadow-black/70 p-2 rounded-full absolute text-blue-500 bottom-5 left-5 bg-white z-20">
+    <button id="sideBarOpen" class="lg:hidden shadow-sm shadow-black/70 p-2 rounded-full fixed text-blue-500 bottom-5 left-5 bg-white z-20">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14"></path>
             <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
     </button>
     `
-    return headerContainer
+    return mobileContainer
 }
 
 export async function siderBarEvents() {
@@ -109,8 +117,9 @@ export async function siderBarEvents() {
     const sideBarClose = document.querySelector("#sideBarClose")
     const sideBarOpen = document.querySelector("#sideBarOpen")
     const sideBarMobileContainer = document.querySelector("#sideBarMobileContainer")
+    const mobileOverlay = document.querySelector("#mobileOverlay")
 
-    if(!botonLogOut || !botonLogoutMobile || !sideBarClose || !sideBarMobileContainer || !sideBarOpen) return
+    if(!botonLogOut || !botonLogoutMobile || !sideBarClose || !sideBarMobileContainer || !sideBarOpen || !mobileOverlay) return
 
     sideBarClose.addEventListener("click", async (e) => {
         e.preventDefault()
@@ -122,8 +131,9 @@ export async function siderBarEvents() {
         sideBarOpen.classList.remove("animate-slide-out-left")
         sideBarOpen.classList.add("animate-slide-in-right")
 
-        sideBarClose.classList.remove("animate-slide-in-left")
         sideBarClose.classList.add("animate-slide-out-right")
+
+        mobileOverlay.classList.add("hidden")
 
         setTimeout(() => {
             sideBarMobileContainer.classList.add("hidden")
@@ -146,10 +156,17 @@ export async function siderBarEvents() {
         sideBarClose.classList.remove("hidden")
         sideBarClose.classList.remove("animate-slide-out-right")
         sideBarClose.classList.add("animate-slide-in-left")
+        
+        mobileOverlay.classList.remove("hidden")
 
         setTimeout(() => {
             sideBarOpen.classList.add("hidden")
         }, 300)
+    })
+
+    mobileOverlay.addEventListener("click", (e) => {
+        e.preventDefault()
+        ;(sideBarClose as HTMLElement).click()
     })
 
     botonLogOut.addEventListener("click", async (e) => {
