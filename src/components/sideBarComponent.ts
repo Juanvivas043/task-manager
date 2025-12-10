@@ -4,7 +4,7 @@ import { getSession, signOut } from "../services/auth"
 export async function sideBarComponent(){
     const session = await getSession()
     const headerContainer = /*html*/ `
-    <aside class="bg-blue-600 text-white hidden lg:flex lg:flex-col justify-between p-8">
+    <aside class="bg-blue-600 text-white hidden lg:flex lg:flex-col justify-between h-full p-8">
         <div class="flex flex-row gap-3 bg-white p-5 rounded-md">
             <svg class="text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2H2V12C2 12.5304 2.21071 13.0391 2.58579 13.4142C2.96086 13.7893 3.46957 14 4 14H14V4C14 3.46957 13.7893 2.96086 13.4142 2.58579C13.0391 2.21071 12.5304 2 12 2Z"></path>
@@ -45,7 +45,7 @@ export async function sideBarComponent(){
         </div>
     </aside>
     
-    <aside id="sideBarMobileContainer" class="bg-blue-600 text-white hidden absolute h-screen flex-col lg:hidden justify-between p-8">
+    <aside id="sideBarMobileContainer" class="bg-blue-600 text-white hidden fixed h-screen flex-col lg:hidden justify-between p-8 z-10">
         <div class="flex flex-row gap-3 bg-white p-5 rounded-md">
             <svg class="text-blue-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2H2V12C2 12.5304 2.21071 13.0391 2.58579 13.4142C2.96086 13.7893 3.46957 14 4 14H14V4C14 3.46957 13.7893 2.96086 13.4142 2.58579C13.0391 2.21071 12.5304 2 12 2Z"></path>
@@ -86,14 +86,14 @@ export async function sideBarComponent(){
         </div>
     </aside>
     
-    <button id="sideBarClose" class="lg:hidden hidden shadow-sm shadow-black/70 p-2 rounded-full absolute text-blue-500 top-15 right-15">
+    <button id="sideBarClose" class="lg:hidden hidden shadow-sm shadow-black/70 p-2 rounded-full absolute text-blue-500 top-5 right-5 z-20 bg-white">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M19 12H5"></path>
             <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
     </button>
 
-    <button id="sideBarOpen" class="lg:hidden shadow-sm shadow-black/70 p-2 rounded-full absolute text-blue-500 bottom-15 left-15">
+    <button id="sideBarOpen" class="lg:hidden shadow-sm shadow-black/70 p-2 rounded-full absolute text-blue-500 bottom-5 left-5 bg-white z-20">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14"></path>
             <polyline points="12 5 19 12 12 19"></polyline>
